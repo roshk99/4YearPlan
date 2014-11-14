@@ -3,6 +3,7 @@
 ?>
 <a href="home.php"><b>Back to Home</b></a><br></br>
 
+<!--Div for all the counters-->
 <div id="counters" style="font-weight: bold; color: black;">
 	<table class="table">
 		<tr>

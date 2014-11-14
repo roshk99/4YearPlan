@@ -31,15 +31,20 @@
 			echo '<tr>';
 			echo '<td><b>' . $major . '</b></td>';
 			echo '<td>';
+		
+			//If there are classes missing for that major
 			if ($missing[$major] != [])
 			{
 				echo '<ul style="text-align: left">';
+				//For each missing class
 				foreach ($missing[$major] as $classes)
 				{
+					//If the required number is 1 and the number of classes is 1, just display the class
 					if ($classes["req_number"] == 1 && count($classes["classes"]) == 1)
 					{
 						echo '<li>' . implode(",", $classes["classes"]) . '</li>';
 					}
+					//Otherwise, display in the form "1 classes from: (list of classes here)"
 					else
 					{
 						echo '<li>Need ' . $classes["req_number"] . ' classes from: ' . implode(", ", $classes["classes"]) . '</li>';
@@ -48,6 +53,7 @@
 				}
 				echo '</ul>';
 			}
+			//Otherwise, say that all reqs are fulfilled
 			else
 			{
 				echo '<span style="color: green">All reqs fulfulled!</span>';
@@ -57,6 +63,8 @@
 		}
 	?>
 </table>
+
+<!-- Display a list of the included majors at the bottom-->
 <div style="font-size: 110%;">
 	Classes also included from majors:
 	<?php

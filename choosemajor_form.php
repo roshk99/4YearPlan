@@ -23,7 +23,7 @@
 					?>
 			</select>
 		</div>
-			
+		<!--Submits to choosemajor.php-->		
 		<button type="submit" class="btn btn-default">Submit</button>
 	</fieldset>
 </form>
