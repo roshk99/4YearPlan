@@ -22,13 +22,13 @@
 	</table>
 </div>
 
-
+<!--Div for the selectboxes and buttons-->
 <div id="semesterform" style="float: left;">
 	<button id="countercalc" onclick="update()" >Calculate Counters</button><br></br>
 	<form id="saveclasses" method="post" action="save.php">
 		<input type="submit" value="Save Class Selections"><br></br>
 	<?php
-		//Semester 0
+		//Renders ap classes separately
 		echo '<b> AP Classes </b>';
 		echo '<select id = "semester0" name="semester0[]" class="selectpicker" data-live-search="true" 
 			data-width="300px" multiple data-max-option="25">';
@@ -40,6 +40,7 @@
 		
 		echo '</select><br></br>';
 
+		//Renders fall classes in fall semesters and spring classes in spring semesters
 		for ($i=1; $i<9; $i++)
 		{
 			echo '<b> Semester ' . $i . ' </b>  ';
@@ -65,7 +66,10 @@
 	</form>
 </div>
 
+<!--Div for semester table-->
 <div id="semesters" style="float: right;">
+
+	<!--Table for AP classes, will just have a comma separated list-->
 	<table class="table" style="width: 700px;">
 		<tr>
 			<td>
@@ -77,8 +81,10 @@
 
 	<table class="table" style="width: 700px;">
 	<?php
+		//Creates semesters 1-8 and adds 7 bullets per semester
 		for ($i=1; $i<9; $i++)
 			{
+				//Odd semesters on the left and even semesters on the right
 				if ($i % 2 == 1)
 				{
 					echo '<tr>';
