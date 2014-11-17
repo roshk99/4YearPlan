@@ -1,6 +1,7 @@
 <?php
 	require('config.php');
-	
+	require('/requirements/checkreqs.php');
+
 	//Get the selected and included majors and convert them into an array (are storead as comma separated string)
 	$query = query('SELECT selectedmajors FROM users WHERE userid=?', $_SESSION["id"]);
 	$majors = explode(",", $query[0]["selectedmajors"]);
@@ -15,6 +16,7 @@
 	}
 	
 	$classlist = [];
+	$classlist_classnames = [];
 	//Get all selected classes 
 	for ($i=0; $i<9; $i++)
 	{
@@ -25,15 +27,22 @@
 		}
 	}
 
+	foreach ($classlist as $id)
+	{
+		$query = query('SELECT class_name FROM classes WHERE id=?', $id);
+		$classlist_classnames[count($classlist_classnames)] = $query[0]["class_name"];
+	}
+
 	//For each major check requirements
 	$missing = [];
+	$missing_classes = [];
 
 	foreach ($majors as $major)
 	{
 		//Get all required classes for the major
 		$query = query('SELECT * FROM class_major WHERE major=?', $major);
 		$missing[$major] = [];
-
+		$missing_classes[$major] = checkreqs($classlist_classnames, $major);
 		//For each required class
 		for($i=0, $n=count($query); $i<$n; $i++)
 		{
@@ -83,5 +92,5 @@
 		
 	}
 	//Render home_form with the given variables
-	render('home_form.php', ["majors" => $majors, "includedmajors" => $included, "missing" => $missing]);
+	render('home_form.php', ["majors" => $majors, "includedmajors" => $included, "missing" => $missing, "missing_classes" => $missing_classes]);
 ?>

@@ -22,6 +22,7 @@
 	{
 		$included = explode(",", $include_query[0]["includedmajors"]);
 		$my_majors = array_merge($majors, $included);
+	}
 	//Otherwise my_majors just has majors
 	else
 	{

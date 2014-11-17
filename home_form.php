@@ -31,8 +31,53 @@
 			echo '<tr>';
 			echo '<td><b>' . $major . '</b></td>';
 			echo '<td>';
-		
-			//If there are classes missing for that major
+
+			if ($missing_classes[$major]["simple"] != [] || $missing_classes[$major]["one_of"] != [] || $missing_classes[$major]["special"] != [])
+			{
+				if ($missing_classes[$major] != ["No data found"])
+				{
+					echo '<ul style="text-align: left">';
+
+					//Simple
+					if ($missing_classes[$major]["simple"] != [])
+					{
+						foreach ($missing_classes[$major]["simple"] as $classname)
+						{
+							echo '<li>' . $classname . '</li>';
+						}
+					}
+
+					//One_of
+					if ($missing_classes[$major]["one_of"] != [])
+					{
+						foreach ($missing_classes[$major]["one_of"] as $info)
+						{
+							echo '<li>Need ' . $info["req"] . ' of ' . implode(", ", $info["classes"]) . '</li>';
+						}
+					}
+
+					//Special
+					if ($missing_classes[$major]["special"] != [])
+					{
+						foreach ($missing_classes[$major]["special"] as $info)
+						{
+							echo '<li> Need ' . $info["req"] . ' of level (' . implode(", ", $info["levels"]) . ') out of depts (' . implode(", ", $info["depts"]) . ') that are not (' . implode(", ", $info["not"]) . ')</li>';
+						}
+					}
+
+					echo '</ul>';
+				}
+				else
+				{
+					echo '<span style="color: red">No data found</span>';
+				}	
+			}
+			else
+			{
+				echo '<span style="color: green">All reqs fulfulled!</span>';
+			}
+
+			/*//If there are classes missing for that major
 			if ($missing[$major] != [])
 			{
 				echo '<ul style="text-align: left">';
@@ -57,7 +102,8 @@
 			else
 			{
 				echo '<span style="color: green">All reqs fulfulled!</span>';
-			}
+			}*/
+
 			echo '</td>';
 			echo '</tr>';
 		}

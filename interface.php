@@ -1,6 +1,6 @@
 <?php
-	require('renderclasses.php');
-?>
+	require('renderclasses.php'); 
+?> 
 <a href="home.php"><b>Back to Home</b></a><br></br>
 
 <!--Div for all the counters-->
