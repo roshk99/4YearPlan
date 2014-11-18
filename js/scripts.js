@@ -30,18 +30,21 @@ function populatetables(classes)
 	//AP classes
 	var apclasses = document.getElementById("apclasseslist");
 	apclasses.innerHTML = "";
-	var my_str = ""; 
-	for (counter0 = 0, maxclasses = classes[0].length; counter0<maxclasses; counter0++)
+	if (classes[0] != null)
 	{
-		var classinfo = parseclass(classes[0][counter0]); 
-		my_str = my_str + classinfo["classname"] + " - " + classinfo["credits"];
-		if (counter0 != classes[0].length - 1)
+		var my_str = "";
+		for (counter0 = 0, maxclasses = classes[0].length; counter0<maxclasses; counter0++)
 		{
-			my_str = my_str + ", ";
+			var classinfo = parseclass(classes[0][counter0]); 
+			my_str = my_str + classinfo["classname"] + " - " + classinfo["credits"];
+			if (counter0 != classes[0].length - 1)
+			{
+				my_str = my_str + ", ";
+			}
+			updatevars(classinfo);
 		}
-		updatevars(classinfo);
 	}
-	apclasses.innerHTML = my_str;
+		apclasses.innerHTML = my_str;
  
 	for (counter1 = 1; counter1 < 9; counter1++)
 	{	
@@ -177,11 +180,11 @@ function conditionalformatting()
 	{
 		if (parseInt(document.getElementById(my_array[i] + "num").innerHTML) >= parseInt(document.getElementById(my_array[i] + "den").innerHTML))
 		{
-			document.getElementById(my_array[i]).style.color = "green";
+			document.getElementById(my_array[i] + "td").className = "success";
 		}
 		else
 		{
-			document.getElementById(my_array[i]).style.color = "red";
+			document.getElementById(my_array[i] + "td").className = "danger";
 		}
 	}
 }

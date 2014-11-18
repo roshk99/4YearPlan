@@ -47,10 +47,10 @@
 		{
 			$numer = 0;
 			foreach ($classlist as $class)
-			{
-				$level = substr($class, 5, 6) . "00";
+			{	
+				$level = $class[5] . "00";
 				$dept = substr($class, 0, 4);
-
+				
 				if (array_search($level, $info["levels"]) == true && array_search($dept, $info["depts"]) == true && array_search($class, $info["not"]) == false)
 				{
 					$numer++;

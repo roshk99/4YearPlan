@@ -33,11 +33,6 @@ div
 	text-align: center;
 }
 
-tr
-{
-	text-align: center;
-	width: 100%;
-}
 
 .form-group
 {
@@ -45,43 +40,5 @@ tr
 }
 
 
-
-.table, td, tr, th
-{
-	border: 2px solid black;
-	text-align: center;
-}
-
-#counters
-{
-	text-align: center;
-}
-
-#navbar
-{
-   list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.link-li
-{
-	float: left;
-}
-
-.link-a
-{
-	display: block;
-    width: 375px;
-	height: 100px
-    font-weight: bold;
-    color: black;
-    background-color: #00CCFF;
-    text-align: center;
-    padding: 4px;
-    text-decoration: none;
-    text-transform: uppercase;
-}
 
 	

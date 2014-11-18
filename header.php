@@ -16,8 +16,8 @@
 	</head>
 	<title>4 Year Plan</title>
 	<body>
-		<div class="container">
-			<div id="top">
+		<div class="container" class="panel panel-default">
+			<div class="page-header">
 				<h1> 4 Year Plan </h1>
 			</div>
 			<div id="middle">
